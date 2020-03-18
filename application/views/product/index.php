@@ -13,7 +13,7 @@
 
         <div class="col-lg-6">
             <?= validation_errors(); ?>
-            <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>') ?>
+            <?= form_error('nama_p', '<div class="alert alert-danger" role="alert">', '</div>') ?>
 
             <?= $this->session->flashdata('message'); ?>
 
@@ -32,14 +32,14 @@
                 </thead>
                 <tbody>
                     <?php $i = 1; ?>
-                    <?php foreach ($menu as $m) : ?>
+                    <?php foreach ($product as $m) : ?>
 
                         <tr>
                             <th scope="row"><?= $i; ?></th>
-                            <td><?php echo $m->menu; ?></td>
+                            <td><?php echo $m->nama_p; ?></td>
                             <td>
-                                <a class="badge badge-success" href="" data-toggle="modal" data-target="#Modaledit<?php echo $m->id; ?>">Edit</a>
-                                <a class="badge badge-danger" href="<?= base_url('menu/delete/') . $m->id; ?>">Delete</a>
+                                <a class="badge badge-success" href="" data-toggle="modal" data-target="#Modaledit<?php echo $m->idp; ?>">Edit</a>
+                                <a class="badge badge-danger" href="<?= base_url('product/delete/') . $m->idp; ?>">Delete</a>
 
 
                             </td>

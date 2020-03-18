@@ -10,9 +10,9 @@ class Product extends CI_Controller
         $this->session->userdata('email')])->row_array();
 
 
-        $data['menu'] = $this->M_menu->get();
+        $data['product'] = $this->M_product->get();
 
-        $this->form_validation->set_rules('menu', 'Menu', 'required');
+        $this->form_validation->set_rules('nama_p', 'Nama product', 'required');
 
         if ($this->form_validation->run() == false) {
 
@@ -23,11 +23,22 @@ class Product extends CI_Controller
             $this->load->view('product/index', $data);
             $this->load->view('templates/footer');
         } else {
-            $this->db->insert('user_menu', ['menu' => $this->input->post('menu')]);
+            $this->db->insert('product', ['nama_p' => $this->input->post('nama_p')]);
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-                    New menu added.
+                    New product added.
                     </div>');
-            redirect('menu');
+            redirect('product');
         }
     }
+
+
+    public function delete($id)
+    {
+
+        $data['product'] = $this->M_product->delete($id);
+        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+            Data successfully deleted. </div>');
+        redirect('product');
+    }
+
 }
