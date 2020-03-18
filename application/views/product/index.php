@@ -79,7 +79,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="post" action="<?= base_url('menu');  ?>">
+            <form method="post" action="<?= base_url('product');  ?>">
                 <div class="modal-body">
 
                     <div class="form-group">
@@ -103,8 +103,8 @@
 
 <!-- Modal Edit -->
 
-<?php foreach ($menu as $row) : ?>
-    <div class="modal fade" id="Modaledit<?php echo $row->id; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<?php foreach ($product as $row) : ?>
+    <div class="modal fade" id="Modaledit<?php echo $row->idp; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -113,13 +113,13 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form method="post" action="<?= base_url('menu/update');  ?>">
+                <form method="post" action="<?= base_url('product/update');  ?>">
                     <div class="modal-body">
 
                         <div class="form-group">
 
-                            <input type="text" class="form-control" id="menu" name="menu" value="<?php echo $row->menu; ?>" placeholder="menu name">
-                            <input type="hidden" class="form-control" name="id" value="<?php echo $row->id; ?>">
+                            <input type="text" class="form-control" id="menu" name="menu" value="<?php echo $row->nama_p; ?>" placeholder="menu name">
+                            <input type="hidden" class="form-control" name="idp" value="<?php echo $row->idp; ?>">
                         </div>
 
                     </div>
