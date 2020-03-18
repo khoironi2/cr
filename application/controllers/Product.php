@@ -12,7 +12,12 @@ class Product extends CI_Controller
 
         $data['product'] = $this->M_product->get();
 
-        $this->form_validation->set_rules('nama_p', 'Nama product', 'required');
+        $this->form_validation->set_rules('nama_p', 'Name product', 'required');
+        $this->form_validation->set_rules('harga_p', 'Product Price', 'required');
+        $this->form_validation->set_rules('url_img', 'Url Images', 'required');
+        $this->form_validation->set_rules('url_video', 'Url Videos', 'required');
+        $this->form_validation->set_rules('url_file', 'Url File', 'required');
+        $this->form_validation->set_rules('idjp', 'Jenis Product', 'required');
 
         if ($this->form_validation->run() == false) {
 
@@ -23,13 +28,20 @@ class Product extends CI_Controller
             $this->load->view('product/index', $data);
             $this->load->view('templates/footer');
         } else {
-            $this->db->insert('product', ['nama_p' => $this->input->post('nama_p')]);
+            $data = array(
+                'nama_p' => $this->input->post('nama_p'),
+                'harga_p' => $this->input->post('harga_p'),
+                'url_img' => $this->input->post('url_img'),
+                'url_video' => $this->input->post('url_video'),
+                'url_file' => $this->input->post('url_file'),
+                'idjp' => $this->input->post('idjp')
+            );
+            $this->M_product->insert($data);
+
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-                    New product added.
-                    </div>');
+            Add product successfully. </div>');
             redirect('product');
         }
-    }
 
 
     public function delete($id)

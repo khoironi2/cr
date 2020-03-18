@@ -16,6 +16,16 @@ class M_product extends CI_Model
         return $result->result();
     }
 
+    public function insert($data)
+    {
+        $this->db->insert('product', $data);
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
 
     public function delete($id)
