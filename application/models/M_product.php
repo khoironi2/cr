@@ -11,6 +11,7 @@ class M_product extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('product');
+        $this->db->join('jenis_product', 'jenis_product.idjp = product.idjp');
         $result = $this->db->get();
         return $result->result();
     }
@@ -21,7 +22,7 @@ class M_product extends CI_Model
     {
         $this->db->where('idp', $id);
         $this->db->delete('product');
-
+       
         if ($this->db->affected_rows() > 0)
             return true;
         else

@@ -18,14 +18,16 @@
             <?= $this->session->flashdata('message'); ?>
 
 
-            <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">Add New Menu</a>
+            <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#exampleModal">Add New Product</a>
 
 
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Menu</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Harga</th>
+                        <th scope="col">Jenis</th>
                         <th scope="col">Action</th>
 
                     </tr>
@@ -37,6 +39,8 @@
                         <tr>
                             <th scope="row"><?= $i; ?></th>
                             <td><?php echo $m->nama_p; ?></td>
+                            <td><?php echo $m->harga_p; ?></td>
+                            <td><?php echo $m->namajp; ?></td>
                             <td>
                                 <a class="badge badge-success" href="" data-toggle="modal" data-target="#Modaledit<?php echo $m->idp; ?>">Edit</a>
                                 <a class="badge badge-danger" href="<?= base_url('product/delete/') . $m->idp; ?>">Delete</a>
