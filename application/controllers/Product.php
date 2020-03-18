@@ -42,6 +42,7 @@ class Product extends CI_Controller
             Add product successfully. </div>');
             redirect('product');
         }
+    }
 
 
     public function delete($id)
@@ -54,3 +55,4 @@ class Product extends CI_Controller
     }
 
 }
+
