@@ -78,7 +78,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add New Menu</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add New Product</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -87,8 +87,39 @@
                 <div class="modal-body">
 
                     <div class="form-group">
+                        <input type="text" class="form-control" id="nama_p" name="nama_p" placeholder="product name">
+                    </div>
 
-                        <input type="text" class="form-control" id="menu" name="menu" placeholder="menu name">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="harga_p" name="harga_p" placeholder="price">
+                    </div>
+
+
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Jenis Product</label>
+                      </div>
+                      <select name="idjp" class="custom-select" id="inputGroupSelect01">
+                        <?php foreach ($product as $jp): ?>
+                        <option value="<?php echo $jp->idjp; ?>"><?php echo $jp->namajp; ?></option>
+                       
+                         <?php endforeach ?>
+                      </select>
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="url_img" name="url_img" placeholder="url image">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="url_video" name="url_video" placeholder="url video">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="url_file" name="url_file" placeholder="url file">
                     </div>
 
                 </div>
