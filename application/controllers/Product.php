@@ -54,5 +54,41 @@ class Product extends CI_Controller
         redirect('product');
     }
 
-}
+    public function order()
+    {
+        $data['title'] = 'Paket order';
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
 
+        $data['product'] = $this->M_product->get();
+
+        $data['subMenu'] = $this->M_submenu->get();
+
+        $this->form_validation->set_rules('title', 'Title', 'required');
+        $this->form_validation->set_rules('menu_id', 'Menu', 'required');
+        $this->form_validation->set_rules('url', 'Url', 'required');
+        $this->form_validation->set_rules('icon', 'Icon', 'required');
+        $this->form_validation->set_rules('is_active', 'Active', 'required');;
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('product/order', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $data = array(
+                'title' => $this->input->post('title'),
+                'menu_id' => $this->input->post('menu_id'),
+                'url' => $this->input->post('url'),
+                'icon' => $this->input->post('icon'),
+                'is_active' => $this->input->post('is_active')
+            );
+            $this->M_submenu->insert($data);
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Add submenu successfully. </div>');
+            redirect('menu/submenu');
+        }
+    }
+}
