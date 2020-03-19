@@ -54,7 +54,7 @@ class Product extends CI_Controller
         redirect('product');
     }
 
-    public function order()
+    public function paket()
     {
         $data['title'] = 'Paket order';
         $data['user'] = $this->db->get_where('user', ['email' =>
