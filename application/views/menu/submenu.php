@@ -216,7 +216,7 @@
                             </div>
 
                             <select name="menu_id" class="custom-select" id="inputGroupSelect01">
-                                <option selected><?= $sm->menu; ?></option>
+                                <option value="<?php echo $m->id; ?>" selected><?= $sm->menu; ?></option>
                                 <?php foreach ($menu as $m) : ?>
 
                                     <option value="<?php echo $m->id; ?>"><?php echo $m->menu; ?></option>
