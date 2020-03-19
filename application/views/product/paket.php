@@ -30,30 +30,30 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Menu</th>
-                        <th scope="col">Url</th>
-                        <th scope="col">Icon</th>
-                        <th scope="col">Active</th>
+                        <th scope="col">Paket</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Paket Price</th>
+                        <th scope="col">Revisi Max</th>
+                        <th scope="col">Total</th>
                         <th scope="col">Action</th>
 
                     </tr>
                 </thead>
                 <tbody>
                     <?php $i = 1; ?>
-                    <?php foreach ($subMenu as $sm) : ?>
+                    <?php foreach ($paket as $sm) : ?>
 
                         <tr>
                             <th scope="row"><?= $i; ?></th>
-                            <td><?php echo $sm->title; ?></td>
-                            <td><?php echo $sm->menu; ?></td>
-                            <td><?php echo $sm->url; ?></td>
-                            <td><?php echo $sm->icon; ?></td>
-                            <td><?php echo $sm->is_active; ?></td>
+                            <td><?php echo $sm->nama_pp; ?></td>
+                            <td><?php echo $sm->nama_p; ?></td>
+                            <td><?php echo $sm->harga_pp; ?></td>
+                            <td><?php echo $sm->max_revisi; ?></td>
+                            <td><?php echo $sm->harga_total; ?></td>
 
                             <td>
-                                <a class="badge badge-success" href="" data-toggle="modal" data-target="#SubmenuModaledit<?= $sm->idsm; ?>">Edit</a>
-                                <a class="badge badge-danger" href="<?= base_url('menu/deletesubmenu/') . $sm->idsm; ?>">Delete</a>
+                                <a class="badge badge-success" href="" data-toggle="modal" data-target="#SubmenuModaledit<?= $sm->idpp; ?>">Edit</a>
+                                <a class="badge badge-danger" href="<?= base_url('menu/deletesubmenu/') . $sm->idpp; ?>">Delete</a>
 
 
                             </td>
@@ -140,9 +140,9 @@
 
                         <select name="menu_id" class="custom-select" id="menu_id">
                             <option selected>Choose..</option>
-                            <?php foreach ($menu as $m) : ?>
+                            <?php foreach ($paket as $m) : ?>
 
-                                <option value="<?php echo $m->id; ?>"><?php echo $m->menu; ?></option>
+                                <option value="<?php echo $m->nama_pp; ?>"><?php echo $m->nama_pp; ?></option>
 
                             <?php endforeach ?>
                         </select>
@@ -190,8 +190,8 @@
 
 <!-- Modal Edit -->
 
-<?php foreach ($subMenu as $sm) : ?>
-    <div class="modal fade" id="SubmenuModaledit<?= $sm->idsm; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<?php foreach ($paket as $sm) : ?>
+    <div class="modal fade" id="SubmenuModaledit<?= $sm->idpp; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -205,21 +205,21 @@
 
                         <div class="form-group">
                             <label for="title">Title</label>
-                            <input type="text" class="form-control" id="title" name="title" value="<?= $sm->title; ?>" placeholder="menu name">
-                            <input type="text" hidden class="form-control" name="id" value="<?= $sm->idsm; ?>" placeholder="menu name">
+                            <input type="text" class="form-control" id="title" name="nama_pp" value="<?= $sm->nama_pp; ?>" placeholder="paket name">
+                            <input type="text" hidden class="form-control" name="idpp" value="<?= $sm->idpp; ?>" placeholder="">
 
                         </div>
 
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupSelect01">Menu from</label>
+                                <label class="input-group-text" for="inputGroupSelect01">Max revisi</label>
                             </div>
 
                             <select name="menu_id" class="custom-select" id="inputGroupSelect01">
-                                <option selected><?= $sm->menu; ?></option>
-                                <?php foreach ($menu as $m) : ?>
+                                <option selected><?= $sm->max_revisi; ?></option>
+                                <?php foreach ($paket as $m) : ?>
 
-                                    <option value="<?php echo $m->id; ?>"><?php echo $m->menu; ?></option>
+                                    <option value="<?php echo $m->max_revisi; ?>"><?php echo $m->max_revisi; ?></option>
 
                                 <?php endforeach ?>
                             </select>
@@ -228,20 +228,11 @@
 
                         <div class="form-group">
                             <label for="url">Url</label>
-                            <input type="text" class="form-control" id="url" name="url" value="<?= $sm->url; ?>" placeholder="menu name">
+                            <input type="text" class="form-control" id="url" name="harga_total" value="<?= $sm->harga_total; ?>" placeholder="menu name">
 
                         </div>
 
-                        <div class="form-group">
-                            <label for="icon">Icon</label>
-                            <input type="text" class="form-control" id="icon" name="icon" value="<?= $sm->icon; ?>" placeholder="menu name">
 
-                        </div>
-                        <div class="form-group">
-                            <label for="is_active">Status</label>
-                            <input type="text" class="form-control" id="is_active" name="is_active" value="<?= $sm->is_active; ?>" placeholder="menu name">
-
-                        </div>
 
                     </div>
 

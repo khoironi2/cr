@@ -62,7 +62,7 @@ class Product extends CI_Controller
 
         $data['product'] = $this->M_product->get();
 
-        $data['subMenu'] = $this->M_submenu->get();
+        $data['paket'] = $this->M_paketproduct->get();
 
         $this->form_validation->set_rules('title', 'Title', 'required');
         $this->form_validation->set_rules('menu_id', 'Menu', 'required');
@@ -74,7 +74,7 @@ class Product extends CI_Controller
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
             $this->load->view('templates/topbar', $data);
-            $this->load->view('product/order', $data);
+            $this->load->view('product/paket', $data);
             $this->load->view('templates/footer');
         } else {
             $data = array(
@@ -88,7 +88,7 @@ class Product extends CI_Controller
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             Add submenu successfully. </div>');
-            redirect('menu/submenu');
+            redirect('product/paket');
         }
     }
 }
