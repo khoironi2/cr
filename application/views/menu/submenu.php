@@ -219,7 +219,7 @@
                                 <option selected><?= $sm->menu; ?></option>
                                 <?php foreach ($menu as $m) : ?>
 
-                                    <option value="<?php echo $m->menu_id; ?>"><?php echo $m->menu; ?></option>
+                                    <option value="<?php echo $m->id; ?>"><?php echo $m->menu; ?></option>
 
                                 <?php endforeach ?>
                             </select>
