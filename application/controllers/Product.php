@@ -59,6 +59,8 @@ class Product extends CI_Controller
         $data['title'] = 'Paket order';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
+        $data['menu'] = $this->M_menu->get();
+
 
         $data['product'] = $this->M_product->get();
 
